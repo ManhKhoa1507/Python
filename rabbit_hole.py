@@ -2,11 +2,15 @@ import requests
 import csv
 
 def get_page(text) :
+    # get the next page value 
+
     r = text.split()
     page = r[len(r) - 1]
     return page 
 
 def get_array(text) :
+    # get array of two number : [No. , hex_value]
+
     r = text.split()
     
     first_number = r[0].replace("[","").replace(",","")
@@ -16,6 +20,8 @@ def get_array(text) :
     return array 
     
 def get_response(url,page) :
+    # get response from the given url and next page value
+
     new_url = url+page
     response = requests.get(new_url)
     return response
@@ -26,6 +32,7 @@ if __name__ == '__main__' :
     page = 'cE4g5bWZtYCuovEgYSO1'
     response = get_response(url, page)
     
+    #Using cvs file to write the array 
     with open('rabbit_hole.csv', 'w', newline = '') as csvfile :
         rabbit_csv = csv.writer(csvfile, delimiter=';', quotechar='|', quoting = csv.QUOTE_MINIMAL)
     
