@@ -1,6 +1,11 @@
-def main():
-    my_var = "my var"
-    return my_var
+def xor(str1, str2):
+    result = []
+    for i, j in zip(str1, str2):
+        result.append(chr(ord(i) ^ ord(j))
+    return ''.join(result) 
+ 
+xor1 = xor("flag", "{}[?")
+print(xor1)
 
-if __name__ == '__main__':
-    print(main())
+flag = xor(xor1, "{}[?")
+print(flag)
